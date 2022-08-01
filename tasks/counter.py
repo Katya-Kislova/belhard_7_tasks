@@ -17,3 +17,44 @@
 - метод __iter__
 - метод __next__
 """
+
+
+class Counter:
+    """
+    Реализует целочисленный счетчик, который может увеличивать или уменьшать значение (value)
+    на единицу в заданном диапазоне
+    """
+    value: int
+
+    def __init__(self, value: int = 0):
+        """
+        Устанавливает значение счетчика
+        :param value: значение счетчика
+        """
+        self.value = value
+
+    def increase(self, num: int = 1) -> int:
+        """
+        Увеличивает счетчик на заданную величину
+        :param num: заданная величина
+        :return: увеличенный счетчик на заданную величину
+        """
+        self.value += num
+        return self.value
+
+    def decrease(self, num: int = 1) -> int:
+        """
+        Уменьшает счетчик на заданную величину
+        :param num: заданная величина
+        :return: уменьшенный счетчик на заданную величину
+        """
+        self.value -= num
+        return self.value
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        value = self.value
+        self.increase()
+        return value
